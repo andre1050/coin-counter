@@ -89,7 +89,10 @@ h3 { font-size: 26px; }
 .calculator .form-wrapper .amount,
 .calculator .form-wrapper .submit { padding: 3px 10px; }
 
-.calculator .form-wrapper .validation { color: #ff0000; }
+.calculator .form-wrapper .message { 
+    color: #ff0000; 
+    display: none;
+}
 
 /* Results Styles */
 .calculator .result-wrapper {

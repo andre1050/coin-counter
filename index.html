@@ -32,25 +32,25 @@
                             <input id="inputAmount" class="amount js-amount" name="amount" type="text" placeholder="e.g. 92p, £2.12" />
                             <input class="submit js-submit" name="submit" type="submit" value="Submit" />
                         </p>
-                        <p class="validation js-validation hidden">I'm sorry, but there's a problem with your value...</p>
+                        <p class="message js-message">Enter a valid amount and click Submit</p>
                     </form>
                 </article>
-                <article class="result-wrapper js-results hidden">
+                <article class="result-wrapper js-wrapper hidden">
 
                     <h3>Your Results</h3>
 
                     <div class="result-set summary">
-                        <div class="circle value">
+                        <div class="circle">
                             <p class="js-result-value"></p>
                             <span>Overall Value</span>
                         </div>
-                        <div class="circle value">
-                            <p class="js-result-amount"></p>
+                        <div class="circle">
+                            <p class="js-result-coins"></p>
                             <span>Minimum Coins</span>
                         </div>
                     </div>
-                    
-                    <div class="result-set coins">
+
+                    <div class="result-set coins js-container">
                         
                     </div>
 
@@ -59,10 +59,10 @@
 
         </div>
 
-        <script type="text/template">
+        <script class="js-template-coin" type="text/template">
             <div class="circle coins">
-                <p>{{value}}</p>
-                <span>{{amount}}</span>
+                <p class="coin-value"></p>
+                <span class="coin-amount"></span>
             </div>
         </script>
 

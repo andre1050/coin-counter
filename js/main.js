@@ -22,10 +22,14 @@ require.config({
 });
 
 // Application bootstrap
-require(["jquery", "use!underscore", "Module1", "Module2"], function($, _, Module1, Module2) {
+require(["jquery", "use!underscore", "coinCounter", "uiController"], function($, _, coinCounter, uiController) {
 
-    console.log(Module1.outputModuleName());
+    //console.log(coinCounter.outputModuleName());
 
-    console.log(Module2.outputModuleName());
+    //console.log(uiController.elements);
+
+    var userInput = uiController.validateForm();
+
+
 
 });
