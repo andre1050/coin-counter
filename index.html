@@ -6,8 +6,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>HTML5 Boilerplate</title>
-        <meta name="description" content="">
+        <title>CoinCounter.js</title>
+        <meta name="description" content="Simple JavaScript application that takes a number of pennies and returns the minimum number of Sterling coins needed to make the same amount.">
         <meta name="viewport" content="width=device-width">
 
         <link rel="stylesheet" href="css/normalize.min.css">
@@ -19,11 +19,54 @@
 
         <div class="wrapper">
 
-            <p>Hello world! This is HTML5 Boilerplate.</p>
-            
+            <!-- Module: Calculator -->
+            <section class="calculator">
+                <header>
+                    <h1>CoinCounter.js</h1>
+                    <h2>Simple JavaScript application to calculate the minimum number of coins needed for any amount of pennies.</h2>
+                </header>
+                <article class="form-wrapper">
+                    <form class="js-form" method="post" action="?calculate">
+                        <p>
+                            <label for="inputAmount">Pennies:</label>
+                            <input id="inputAmount" class="amount js-amount" name="amount" type="text" placeholder="e.g. 92p, £2.12" />
+                            <input class="submit js-submit" name="submit" type="submit" value="Submit" />
+                        </p>
+                        <p class="validation js-validation hidden">I'm sorry, but there's a problem with your value...</p>
+                    </form>
+                </article>
+                <article class="result-wrapper js-results hidden">
+
+                    <h3>Your Results</h3>
+
+                    <div class="result-set summary">
+                        <div class="circle value">
+                            <p class="js-result-value"></p>
+                            <span>Overall Value</span>
+                        </div>
+                        <div class="circle value">
+                            <p class="js-result-amount"></p>
+                            <span>Minimum Coins</span>
+                        </div>
+                    </div>
+                    
+                    <div class="result-set coins">
+                        
+                    </div>
+
+                </article>
+            </section>
+
         </div>
-        
+
+        <script type="text/template">
+            <div class="circle coins">
+                <p>{{value}}</p>
+                <span>{{amount}}</span>
+            </div>
+        </script>
+
         <script src="js/require.js" data-main="js/main"></script>
-        
+
     </body>
 </html>

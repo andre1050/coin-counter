@@ -60,33 +60,74 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+h1, h2, h3 { font-weight: bold; }
+h1 { font-size: 28px; }
+h2 { font-size: 16px; }
+h3 { font-size: 26px; }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ==========================================================================
-   Media Queries
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-
+.wrapper {
+    width: 960px;
+    margin: auto;
 }
 
-@media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
+/*************************/
+/*** Calculator Module ***/
+/*************************/
 
+/* Form Styles */
+.calculator .form-wrapper {
+    margin: 20px 0;
+    padding: 20px 0;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.calculator .form-wrapper label,
+.calculator .form-wrapper .amount,
+.calculator .form-wrapper .submit { font-weight: bold; }
+
+.calculator .form-wrapper .amount,
+.calculator .form-wrapper .submit { padding: 3px 10px; }
+
+.calculator .form-wrapper .validation { color: #ff0000; }
+
+/* Results Styles */
+.calculator .result-wrapper {
+    
+}
+
+.calculator .result-wrapper .result-set {
+    width: 100%;
+    display: table;
+    margin: 20px auto;
+}
+
+.calculator .result-wrapper .circle {
+    width: 120px;
+    height: 120px;
+    display: table-cell;
+    background-color: #e2e2e2;
+    border-right: 1px solid #FFF;
+}
+
+.calculator .result-wrapper .circle:last-child { border: none; }
+
+.calculator .result-wrapper .circle p, 
+.calculator .result-wrapper .circle span {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    margin: 0;
+}
+
+.calculator .result-wrapper .circle p { 
+    font-size: 32px;
+    padding-top: 30px;
+}
+
+.calculator .result-wrapper .circle span { 
+    font-size: 14px;
+    margin-top: 5px;
 }
 
 /* ==========================================================================
@@ -149,75 +190,4 @@ textarea {
 
 .clearfix {
     *zoom: 1;
-}
-
-/* ==========================================================================
-   Print styles
-   ========================================================================== */
-
-@media print {
-    * {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster: h5bp.com/s */
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
-
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
-
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
-
-    /*
-     * Don't show links for images, or javascript/internal links
-     */
-
-    .ir a:after,
-    a[href^="javascript:"]:after,
-    a[href^="#"]:after {
-        content: "";
-    }
-
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-
-    thead {
-        display: table-header-group; /* h5bp.com/t */
-    }
-
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
-
-    img {
-        max-width: 100% !important;
-    }
-
-    @page {
-        margin: 0.5cm;
-    }
-
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
-
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
 }
