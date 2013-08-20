@@ -43,7 +43,6 @@ define(["jquery", "use!underscore", "coinsCalculator"], function ($, _, coinsCal
 			}
 			return false;
 		});
-		//return true;
 	};
 	
 	// Public @ Basic form input validation
@@ -58,6 +57,7 @@ define(["jquery", "use!underscore", "coinsCalculator"], function ($, _, coinsCal
 	// Private @ Request calculation from the module and check for type of response received
 	var requestCalculations = function (value) {
 		var coinCalculation = coinsCalculator.calculateCoins(value);
+		console.log("Result from calculation: ", coinCalculation);
 		if (coinCalculation) {
 			// Response is Object - OK
 			updateResults(coinCalculation);
@@ -79,7 +79,6 @@ define(["jquery", "use!underscore", "coinsCalculator"], function ($, _, coinsCal
 
 		// Update Coins
 		var output = "";
-
 		for (coin in results.allCoins) {
 			output += _.template(templates.coins, results.allCoins[coin]);
 		}
@@ -89,7 +88,7 @@ define(["jquery", "use!underscore", "coinsCalculator"], function ($, _, coinsCal
 
 	};
 
-	// Expose public variables to be accessible outside the module
+	// Expose public variables
     return {
         initialiseForm: initialiseForm,
         isFormInputValid: function (value) {
