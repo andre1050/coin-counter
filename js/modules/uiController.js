@@ -67,12 +67,10 @@ define(["jquery", "use!underscore", "coinCounter"], function ($, _, coinCounter)
 		elements.results.coins.html(results.sumCoins);
 
 		// Update Coins
-		var output = "", 
-			contents;
+		var output = "";
 
 		for (coin in results.allCoins) {
-			var contents = _.template(templates.coins, results.allCoins[coin]);
-			output += contents;
+			output += _.template(templates.coins, results.allCoins[coin]);
 		}
 
 		// Write coins to container
@@ -82,7 +80,7 @@ define(["jquery", "use!underscore", "coinCounter"], function ($, _, coinCounter)
 
 	// Expose public variables to be accessible outside the module
     return {
-        initialiseForm: initialiseForm
+        initialiseForm: initialiseForm,
     };
     
 });
