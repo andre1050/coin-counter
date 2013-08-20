@@ -66,7 +66,6 @@ define(["coinsCalculator"], function (coinsCalculator) {
 	    	value = "£1.257422457p";
 	     	expect(coinsCalculator.parseUserInput(value)).toEqual(126);
 	    });
-
 	    it('Should REJECT empty string', function() {
 	    	value = "";
 	     	expect(coinsCalculator.parseUserInput(value)).toBeFalsy();
@@ -80,6 +79,37 @@ define(["coinsCalculator"], function (coinsCalculator) {
 	    it('Should REJECT missing digits', function() {
 	    	value = "£p";
 	     	expect(coinsCalculator.parseUserInput(value)).toBeFalsy();
+	    });
+	});
+
+	// Structure of response object
+	describe("Testing structure of response object", function() {
+
+		// Declare test variable
+		// We're not testing the parsing method here, so let's assume the input
+		// is always a whole number of pence.
+	  	var response = coinsCalculator.calculateCoins(100);
+
+		// Add matcher to check if input is of type "object"
+		beforeEach(function() {
+		  this.addMatchers({
+		    toBeAnObject: function() {
+		      return (typeof this.actual === "object");
+		    }
+		  });
+		});
+		
+		it('Should be an object', function() {
+	     	expect(response).toBeAnObject();
+	    });
+	    it('Should contain the money value of the amound provided by the user', function() {;
+	     	expect(response.value).toBeDefined();
+	    });
+	    it('Should contain a sum of all the coins used', function() {;
+	     	expect(response.sumCoins).toBeDefined();
+	    });
+	    it('Should contain an array with the names and quantities of all coins used', function() {;
+	     	expect(response.allCoins).toBeAnObject();
 	    });
 	});
 	
