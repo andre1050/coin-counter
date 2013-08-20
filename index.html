@@ -35,7 +35,7 @@
                         <p class="message js-message">Enter a valid amount and click Submit</p>
                     </form>
                 </article>
-                <article class="result-wrapper js-wrapper hidden">
+                <article class="result-wrapper js-wrapper">
 
                     <h3>Your Results</h3>
 
@@ -61,8 +61,8 @@
 
         <script class="js-template-coin" type="text/template">
             <div class="circle coins">
-                <p class="coin-value"></p>
-                <span class="coin-amount"></span>
+                <p><%= coin %></p>
+                <span>x <%= total %></span>
             </div>
         </script>
 

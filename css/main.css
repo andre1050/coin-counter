@@ -95,9 +95,7 @@ h3 { font-size: 26px; }
 }
 
 /* Results Styles */
-.calculator .result-wrapper {
-    
-}
+.calculator .result-wrapper { display: none; }
 
 .calculator .result-wrapper .result-set {
     width: 100%;
