@@ -1,5 +1,5 @@
 /** Filename: coinsInterface.js
-    Abstract: ###
+    Abstract: AMD Module that handles the DOM activity (Form and Results) for the coinsCalculator module.
 **/
 
 define(["jquery", "use!underscore", "coinsCalculator"], function ($, _, coinsCalculator) {
@@ -57,7 +57,7 @@ define(["jquery", "use!underscore", "coinsCalculator"], function ($, _, coinsCal
 	// Private @ Request calculation from the module and check for type of response received
 	var requestCalculations = function (value) {
 		var coinCalculation = coinsCalculator.calculateCoins(value);
-		console.log("Result from calculation: ", coinCalculation);
+		console.log("Result from Calculation: ", coinCalculation);
 		if (coinCalculation) {
 			// Response is Object - OK
 			updateResults(coinCalculation);

@@ -1,18 +1,24 @@
 /** Filename: coinsInterfaceSpec.js
-    Abstract: ###
+    Abstract: Test spec for module CoinsInterface.js
 **/
 
 define(["coinsInterface"], function (coinsInterface) {
 
 	// Validation Test Cases
-	describe("Testing form input validation", function() {
-	    it('Should ACCEPT an integer numeric value', function() {
-	     	expect(coinsInterface.isFormInputValid("515")).toBeTruthy();
+	describe("Testing basic form validation", function() {
+	    it('Should ACCEPT any whole number', function() {
+	    	expect(coinsInterface.isFormInputValid("550")).toBeTruthy();
 	    });
-	    it('Should ACCEPT an natural numeric value', function() {
-	     	expect(coinsInterface.isFormInputValid("28.235")).toBeTruthy();
+	    it('Should ACCEPT any real number', function() {
+	    	expect(coinsInterface.isFormInputValid("15.495")).toBeTruthy();
 	    });
-	    it('Should REJECT an empty value', function() {
+	    it('Should ACCEPT any string', function() {
+	    	expect(coinsInterface.isFormInputValid("loremIpsum")).toBeTruthy();
+	    });
+	    it('Should ACCEPT any mix of number and string', function() {
+	    	expect(coinsInterface.isFormInputValid("£15.95p")).toBeTruthy();
+	    });
+	    it('Should REJECT an empty field', function() {
 	     	expect(coinsInterface.isFormInputValid("")).toBeFalsy();
 	    });
 	});
