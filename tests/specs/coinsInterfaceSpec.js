@@ -6,20 +6,29 @@ define(["coinsInterface"], function (coinsInterface) {
 
 	// Validation Test Cases
 	describe("Testing basic form validation", function() {
+
+		// Declare test variable
+	  	var value;
+
 	    it('Should ACCEPT any whole number', function() {
-	    	expect(coinsInterface.isFormInputValid("550")).toBeTruthy();
+	    	value = "550";
+	    	expect(coinsInterface.isFormInputValid(value)).toBeTruthy();
 	    });
 	    it('Should ACCEPT any real number', function() {
-	    	expect(coinsInterface.isFormInputValid("15.495")).toBeTruthy();
+	    	value = "15.495";
+	    	expect(coinsInterface.isFormInputValid(value)).toBeTruthy();
 	    });
 	    it('Should ACCEPT any string', function() {
-	    	expect(coinsInterface.isFormInputValid("loremIpsum")).toBeTruthy();
+	    	value = "Lorem Ipsum";
+	    	expect(coinsInterface.isFormInputValid(value)).toBeTruthy();
 	    });
 	    it('Should ACCEPT any mix of number and string', function() {
-	    	expect(coinsInterface.isFormInputValid("£15.95p")).toBeTruthy();
+	    	value = "£15.95p";
+	    	expect(coinsInterface.isFormInputValid(value)).toBeTruthy();
 	    });
 	    it('Should REJECT an empty field', function() {
-	     	expect(coinsInterface.isFormInputValid("")).toBeFalsy();
+	    	value = "";
+	     	expect(coinsInterface.isFormInputValid(value)).toBeFalsy();
 	    });
 	});
   	
