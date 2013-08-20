@@ -1,8 +1,8 @@
-/** Filename: uiController.js
+/** Filename: coinsInterface.js
     Abstract: ###
 **/
 
-define(["jquery", "use!underscore", "coinCounter"], function ($, _, coinCounter) {
+define(["jquery", "use!underscore", "coinsCalculator"], function ($, _, coinsCalculator) {
 
 	// Private @ Reference to each DOM element wrapped in a jQuery object
 	var elements = {
@@ -32,25 +32,36 @@ define(["jquery", "use!underscore", "coinCounter"], function ($, _, coinCounter)
 	var initialiseForm = function () {
 		elements.theForm.theForm.on("submit", function () {
 			var value = elements.theForm.amount.val();
-			if (value.length < 1) {
-				// Input is Valid
+			if (!isFormInputValid(value)) {
+				// Input is Invalid
 				elements.theForm.message.show();
 				elements.results.wrapper.hide();
 			} else {
-				// Input is Invalid
+				// Input is Valid
 				requestCalculations(value);
 				elements.theForm.message.hide();
 			}
 			return false;
 		});
+		//return true;
 	};
 	
+	// Public @ Basic form input validation
+	var isFormInputValid = function (value) {
+		if ($.trim(value).length > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	// Private @ Request calculation from the module and check for type of response received
 	var requestCalculations = function (value) {
-		var coinCalculation = coinCounter.calculateCoins(value);
+		var coinCalculation = coinsCalculator.calculateCoins(value);
 		if (coinCalculation) {
 			// Response is Object - OK
 			updateResults(coinCalculation);
+			elements.theForm.message.hide();
 			elements.results.wrapper.show();
 		} else {
 			// Response is False - Error
@@ -58,7 +69,7 @@ define(["jquery", "use!underscore", "coinCounter"], function ($, _, coinCounter)
 			elements.results.wrapper.hide();
 		};
 	};
-
+	
 	// Private @ Update DOM after results have been received
 	var updateResults = function (results) {
 		
@@ -81,6 +92,9 @@ define(["jquery", "use!underscore", "coinCounter"], function ($, _, coinCounter)
 	// Expose public variables to be accessible outside the module
     return {
         initialiseForm: initialiseForm,
+        isFormInputValid: function (value) {
+        	return isFormInputValid(value);
+        }
     };
     
 });

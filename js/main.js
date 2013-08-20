@@ -22,22 +22,8 @@ require.config({
 });
 
 // Application bootstrap
-require(["jquery", "use!underscore", "uiController"], function($, _, uiController) {
-
-    //console.log(coinCounter.outputModuleName());
-
-    //console.log(uiController.elements);
-
-    //var userInput = uiController.validateForm();
-
-    // Call SubmitForm asy
-    //formHasBeenSubmitted(function (userInput) {
-
-        //console.log("User Input: ", userInput);
-
-    //});
-
-    uiController.initialiseForm();
-
-
+require(["jquery", "use!underscore", "coinsInterface"], function($, _, coinsInterface) {
+    
+    coinsInterface.initialiseForm();
+    
 });

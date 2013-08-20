@@ -1,5 +1,5 @@
-/** Filename: coinCounter.js
-    Abstract: 
+/** Filename: coinsCalculator.js
+    Abstract: ###
 **/
 
 define(["jquery", "use!underscore"], function ($, _) {
@@ -25,9 +25,9 @@ define(["jquery", "use!underscore"], function ($, _) {
 				]
 			}
 		}
-
+		
 		return response;
-
+		
 	};
 
 	// Expose public variables and functions to be accessible outside of the module
