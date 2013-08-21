@@ -1,5 +1,6 @@
 /** Filename: coinsInterfaceSpec.js
     Abstract: Test spec for module CoinsInterface.js
+    Author: Andre Silva - andre1050@gmail.com
 **/
 
 define(["coinsInterface"], function (coinsInterface) {

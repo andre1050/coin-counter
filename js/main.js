@@ -1,5 +1,6 @@
 /** Filename: main.js
     Abstract: application bootstrap and basic set-up for Require.js
+    Author: Andre Silva - andre1050@gmail.com
 **/
 
 // Basic set-up for Require.js
@@ -24,6 +25,8 @@ require.config({
 // Application bootstrap
 require(["jquery", "use!underscore", "coinsInterface"], function($, _, coinsInterface) {
     
+    // Let's initialise the application by callig the method
+    // that will bind the submission handler to the form.
     coinsInterface.initialiseForm();
     
 });

@@ -1,5 +1,6 @@
 /** Filename: coinsCalculator.js
     Abstract: AMD Module that parses the user input and calculates the minimum number of coins to make a given value in pence.
+	Author: Andre Silva - andre1050@gmail.com
 **/
 
 define(["jquery", "use!underscore"], function ($, _) {
@@ -68,73 +69,87 @@ define(["jquery", "use!underscore"], function ($, _) {
 	// Public @ Parses user input and tries to return amound in pence; will return false otherwise
 	// This method is only made public for testing purposes.
 	var parseUserInput = function (value) {
-		
-		// Pre-validation: look for non-valid characters (anything not number, dot, £ or p).
+
+		// Pre-validation: look for non-valid characters (anything not a number, dot, £ or p).
 		if (value.match(/[^0-9.£p]+/g)) {
 			// If invalid characters are found, return false and leave
 			return false;
 		}
 
+		// Keep reference to each special character we're working with
 		var pound = "£",
 			pence = "p",
-			dot = ".",
-			userValue = value;
+			dot = ".";
 
+		// Initialise counters and control variables
 		var currPound = 0,
 			currPence = 0,
-			totalPence = 0,
 			roundPenceUp = false;
 
+		// Determine position of each character in the string
 		var posOfPound = value.indexOf(pound),
 			posOfPence = value.indexOf(pence),
 			posOfDot = value.indexOf(dot);
+
+		// Helper function to determine if the pence need to be rounded up;
+		// For this, we isolate the 3rd character after the dot and check if it's equal or greater than 5;
+		var determineIfRoundIsNeeded = function () {
+			var thirdPlace = value.substring(posOfDot + 3, posOfDot + 4);
+			if (parseInt(thirdPlace) >= 5) {
+				roundPenceUp = true;
+			}
+		}
 		
+		// Parsing user input: if I was a RegExp guru, I would probably solve this
+		// in a nicer way... but we can achieve the same results working with strings.
 		if (posOfPound === 0) {
 			if (posOfDot != -1) {
+				// Pounds and pennies
 				currPound = value.substring(posOfPound + 1, posOfDot);
+				// Make sure there's a number after the dot
 				if (posOfPence != posOfDot + 1) {
 					currPence = value.substring(posOfDot + 1, posOfDot + 3);
-					var thirdPlace = value.substring(posOfDot + 3, posOfDot + 4);
-					if (parseInt(thirdPlace) >= 5) {
-						roundPenceUp = true;
-					}
+					determineIfRoundIsNeeded();
 				}
 			} else {
+				// Only pounds, no pennies
 				currPound = value.substring(posOfPound + 1);
 			}
 		} else {
+			// Pounds and pennies (pound sign may be omitted)
 			if (posOfDot != -1) {
 				currPound = value.substring(0, posOfDot);
 				currPence = value.substring(posOfDot + 1, posOfDot + 3);
-				var thirdPlace = value.substring(posOfDot + 3, posOfDot + 4);
-				if (parseInt(thirdPlace) >= 5) {
-					roundPenceUp = true;
-				}
+				determineIfRoundIsNeeded();
 			} else {
+				// Only pennies, no pounds
 				currPence = value;
 			}
 			
 		}
 
+		// Parse both pounds and pence to whole numbers (this will discard the "p" at the end)
 		currPound = parseInt(currPound);
 		currPence = parseInt(currPence);
 
+		// If the pence needs to be rounded up, do it here
 		if (roundPenceUp) {
 			currPence += 1;
 		}
 
-		totalPence = (currPound * 100) + currPence;
-
-		return totalPence;
+		// Return final value in pence (requires multiplying pound by 100)
+		return (currPound * 100) + currPence;
 
 	};
 
 	// Expose public variables
     return {
         calculateCoins: function (value) {
+        	// only entry point for other modules using this (except for testing)
         	return calculateCoins(value);
         },
         parseUserInput: function (value) {
+        	// this method is only returned for testing purposes
         	return parseUserInput(value);
         }
     };

@@ -1,5 +1,6 @@
 /** Filename: coinsCalculatorSpec.js
     Abstract: Test spec for module coinsCalculator.js
+    Author: Andre Silva - andre1050@gmail.com
 **/
 
 define(["coinsCalculator"], function (coinsCalculator) {

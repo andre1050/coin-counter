@@ -1,5 +1,6 @@
 /** Filename: coinsInterface.js
     Abstract: AMD Module that handles the DOM activity (Form and Results) for the coinsCalculator module.
+	Author: Andre Silva - andre1050@gmail.com
 **/
 
 define(["jquery", "use!underscore", "coinsCalculator"], function ($, _, coinsCalculator) {
@@ -65,7 +66,8 @@ define(["jquery", "use!underscore", "coinsCalculator"], function ($, _, coinsCal
 			elements.results.wrapper.show();
 		} else {
 			// Response is False - Error
-			//console.log(elements.theForm.message);
+			// FIXME: I can't seem to make the error message appear here;
+			// No idea what the problem could be.
 			elements.theForm.message.show();
 			elements.results.wrapper.hide();
 		};

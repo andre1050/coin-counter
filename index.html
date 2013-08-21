@@ -8,6 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>CoinCounter.js</title>
         <meta name="description" content="Simple JavaScript application that takes a number of pennies and returns the minimum number of Sterling coins needed to make the same amount.">
+        <meta name="Author" content="Andre Silva - andre1050@gmail.com">
         <meta name="viewport" content="width=device-width">
 
         <link rel="stylesheet" href="css/normalize.min.css">
@@ -18,6 +19,7 @@
     <body>
 
         <div class="wrapper">
+
 
             <!-- Module: Calculator -->
             <section class="calculator">
@@ -36,29 +38,26 @@
                     </form>
                 </article>
                 <article class="result-wrapper js-wrapper">
-
                     <h3>Your Results</h3>
-
                     <div class="result-set summary">
                         <div class="circle">
                             <p class="js-result-value"></p>
-                            <span>Overall Value</span>
+                            <span>Value in Pounds</span>
                         </div>
                         <div class="circle">
                             <p class="js-result-coins"></p>
                             <span>Minimum Coins</span>
                         </div>
                     </div>
-
-                    <div class="result-set coins js-container">
-                        
-                    </div>
-
+                    <div class="result-set coins js-container"></div>
                 </article>
             </section>
+            <!-- End Module -->
+
 
         </div>
 
+        <!-- Template: markup used to ouput the results -->
         <script class="js-template-coin" type="text/template">
             <div class="circle coins">
                 <p><%= coin %></p>
