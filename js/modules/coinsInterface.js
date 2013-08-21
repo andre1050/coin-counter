@@ -67,7 +67,7 @@ define(["jquery", "use!underscore", "coinsCalculator"], function ($, _, coinsCal
 		} else {
 			// Response is False - Error
 			// FIXME: I can't seem to make the error message appear here;
-			// No idea what the problem could be.
+			// Possible fix would be manipulating the style attribute directly...
 			elements.theForm.message.show();
 			elements.results.wrapper.hide();
 		};
