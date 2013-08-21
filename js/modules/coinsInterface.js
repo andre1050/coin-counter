@@ -65,6 +65,7 @@ define(["jquery", "use!underscore", "coinsCalculator"], function ($, _, coinsCal
 			elements.results.wrapper.show();
 		} else {
 			// Response is False - Error
+			//console.log(elements.theForm.message);
 			elements.theForm.message.show();
 			elements.results.wrapper.hide();
 		};

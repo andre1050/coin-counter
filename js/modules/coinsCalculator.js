@@ -68,7 +68,65 @@ define(["jquery", "use!underscore"], function ($, _) {
 	// Public @ Parses user input and tries to return amound in pence; will return false otherwise
 	// This method is only made public for testing purposes.
 	var parseUserInput = function (value) {
-		return parseInt(value);
+		
+		// Pre-validation: look for non-valid characters (anything not number, dot, £ or p).
+		if (value.match(/[^0-9.£p]+/g)) {
+			// If invalid characters are found, return false and leave
+			return false;
+		}
+
+		var pound = "£",
+			pence = "p",
+			dot = ".",
+			userValue = value;
+
+		var currPound = 0,
+			currPence = 0,
+			totalPence = 0,
+			roundPenceUp = false;
+
+		var posOfPound = value.indexOf(pound),
+			posOfPence = value.indexOf(pence),
+			posOfDot = value.indexOf(dot);
+		
+		if (posOfPound === 0) {
+			if (posOfDot != -1) {
+				currPound = value.substring(posOfPound + 1, posOfDot);
+				if (posOfPence != posOfDot + 1) {
+					currPence = value.substring(posOfDot + 1, posOfDot + 3);
+					var thirdPlace = value.substring(posOfDot + 3, posOfDot + 4);
+					if (parseInt(thirdPlace) >= 5) {
+						roundPenceUp = true;
+					}
+				}
+			} else {
+				currPound = value.substring(posOfPound + 1);
+			}
+		} else {
+			if (posOfDot != -1) {
+				currPound = value.substring(0, posOfDot);
+				currPence = value.substring(posOfDot + 1, posOfDot + 3);
+				var thirdPlace = value.substring(posOfDot + 3, posOfDot + 4);
+				if (parseInt(thirdPlace) >= 5) {
+					roundPenceUp = true;
+				}
+			} else {
+				currPence = value;
+			}
+			
+		}
+
+		currPound = parseInt(currPound);
+		currPence = parseInt(currPence);
+
+		if (roundPenceUp) {
+			currPence += 1;
+		}
+
+		totalPence = (currPound * 100) + currPence;
+
+		return totalPence;
+
 	};
 
 	// Expose public variables

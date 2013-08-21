@@ -3,7 +3,7 @@
 **/
 
 define(["coinsCalculator"], function (coinsCalculator) {
-  	
+
   	// Parsing Test Cases
 	describe("Testing user input parsing", function() {
 
@@ -87,8 +87,8 @@ define(["coinsCalculator"], function (coinsCalculator) {
 
 		// Declare test variable
 		// We're not testing the parsing method here, so let's assume the input
-		// is always a whole number of pence.
-	  	var response = coinsCalculator.calculateCoins(100);
+		// is always a whole number of pence (as a string, like the input field would be)
+	  	var response = coinsCalculator.calculateCoins("100");
 
 		// Add matcher to check if input is of type "object"
 		beforeEach(function() {
@@ -98,7 +98,7 @@ define(["coinsCalculator"], function (coinsCalculator) {
 		    }
 		  });
 		});
-		
+
 		it('Should be an object', function() {
 	     	expect(response).toBeAnObject();
 	    });
