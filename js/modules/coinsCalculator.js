@@ -11,6 +11,8 @@ define(["jquery", "use!underscore"], function ($, _) {
 		{ name: "£1",  pence: 100 },
 		{ name: "50p", pence: 50  },
 		{ name: "20p", pence: 20  },
+		{ name: "10p", pence: 10  },
+		{ name: "5p",  pence: 5   },
 		{ name: "2p",  pence: 2   },
 		{ name: "1p",  pence: 1   },
 	];

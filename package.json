@@ -1,0 +1,25 @@
+{
+  "name": "coin-counter",
+  "version": "1.0.0",
+  "description": "Simple JavaScript application that takes a number of pennies and returns the minimum number of Sterling coins needed to make the same amount.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "server": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andre1050/coin-counter.git"
+  },
+  "author": "Andre Silva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andre1050/coin-counter/issues"
+  },
+  "homepage": "https://github.com/andre1050/coin-counter#readme",
+  "devDependencies": {
+    "http-server": "^0.9.0"
+  }
+}
