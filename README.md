@@ -13,3 +13,11 @@ This was built as an assignement for a job back in 2013. The code is mostly vani
 
 At the time I decided to keep all DOM manipulation in a separate module at `js\modules\coinsInterface.js`, just so that the algorithm itself at `js\modules\coinsCalculator.js` could be kept "clean" and distributed more easily.
 
+#### To run locally:
+1. Clone this repository using `git clone https://github.com/andre1050/counting-the-pennies`
+
+2. Run `npm install` from the root directory
+
+3. Run `npm run server` to start the dev server
+
+4. Point your browser to `http://192.168.0.5:8080`
